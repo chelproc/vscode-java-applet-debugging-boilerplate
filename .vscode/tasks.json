@@ -1,0 +1,22 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Java Applet",
+            "type": "shell",
+            "command": "javac -g -d dist src/app/App.java"
+        },
+        {
+            "label": "Launch Java Applet with Debugger Enabled",
+            "type": "shell",
+            "command": "appletviewer -J-Xdebug -J-agentlib:jdwp=transport=dt_socket,server=y,address=4000,suspend=n dist/index.html",
+            "dependsOn": ["Build Java Applet"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
